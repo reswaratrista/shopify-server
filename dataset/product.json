@@ -1,0 +1,27 @@
+[
+    {
+      "prod_code": "ABC123",
+      "namaProduk": "Product 1",
+      "beratGram": 500,
+      "panjangCm": 10,
+      "lebarCm": 5,
+      "tinggiCm": 8
+    },
+    {
+      "prod_code": "DEF456",
+      "namaProduk": "Product 2",
+      "beratGram": 800,
+      "panjangCm": 15,
+      "lebarCm": 7,
+      "tinggiCm": 12
+    },
+    {
+      "prod_code": "GHI789",
+      "namaProduk": "Product 3",
+      "beratGram": 300,
+      "panjangCm": 8,
+      "lebarCm": 4,
+      "tinggiCm": 6
+    }
+  ]
+  

@@ -1,0 +1,33 @@
+[
+    {
+      "custNum": 1,
+      "address": "123 Main St",
+      "state": "California",
+      "city": "Los Angeles",
+      "province": "N/A",
+      "zipCode": 90001,
+      "latitude": 34.0522,
+      "longitude": -118.2437
+    },
+    {
+      "custNum": 2,
+      "address": "456 Oak St",
+      "state": "New York",
+      "city": "New York City",
+      "province": "N/A",
+      "zipCode": 10001,
+      "latitude": 40.7128,
+      "longitude": -74.0060
+    },
+    {
+      "custNum": 3,
+      "address": "789 Pine St",
+      "state": "Texas",
+      "city": "Houston",
+      "province": "N/A",
+      "zipCode": 77001,
+      "latitude": 29.7604,
+      "longitude": -95.3698
+    }
+  ]
+  

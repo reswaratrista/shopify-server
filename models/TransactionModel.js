@@ -26,8 +26,8 @@ const transactionSchema = new mongoose.Schema({
   packing_date: { type: Date },
   delivery_date: { type: Date },
   arrival_date: { type: Date },
-  distance: { type: String },
-  duration: { type: String },
+  distance: { type: Number },
+  duration: { type: Number },
 });
 
 const Transaction = mongoose.model("Transaction", transactionSchema);

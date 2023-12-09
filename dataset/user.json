@@ -1,0 +1,24 @@
+[
+    {
+      "userId": "user123",
+      "namaLengkap": "John Doe",
+      "email": "john.doe@example.com",
+      "password": "securepassword",
+      "role": "driver"
+    },
+    {
+      "userId": "admin456",
+      "namaLengkap": "Admin User",
+      "email": "admin.user@example.com",
+      "password": "adminpassword",
+      "role": "admin"
+    },
+    {
+      "userId": "superadmin789",
+      "namaLengkap": "Super Admin",
+      "email": "super.admin@example.com",
+      "password": "superadminpassword",
+      "role": "superadmin"
+    }
+  ]
+  

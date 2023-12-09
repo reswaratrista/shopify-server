@@ -1,0 +1,45 @@
+[
+    {
+      "staffId": "user123",
+      "orderNum": 1,
+      "deliveryNum": 101,
+      "custNum": 1,
+      "prod_code": "ABC123",
+      "vendor": "Vendor A",
+      "shipped_qty": 10,
+      "packing_date": "2023-01-01T12:00:00Z",
+      "delivery_date": "2023-01-05T14:30:00Z",
+      "arrival_date": "2023-01-06T10:00:00Z",
+      "distance": 50,
+      "duration": 48
+    },
+    {
+      "staffId": "admin456",
+      "orderNum": 2,
+      "deliveryNum": 102,
+      "custNum": 2,
+      "prod_code": "DEF456",
+      "vendor": "Vendor B",
+      "shipped_qty": 15,
+      "packing_date": "2023-01-02T10:30:00Z",
+      "delivery_date": "2023-01-08T16:45:00Z",
+      "arrival_date": "2023-01-09T12:30:00Z",
+      "distance": 80,
+      "duration": 72
+    },
+    {
+      "staffId": "superadmin789",
+      "orderNum": 3,
+      "deliveryNum": 103,
+      "custNum": 3,
+      "prod_code": "GHI789",
+      "vendor": "Vendor C",
+      "shipped_qty": 8,
+      "packing_date": "2023-01-03T14:15:00Z",
+      "delivery_date": "2023-01-12T11:00:00Z",
+      "arrival_date": "2023-01-13T09:30:00Z",
+      "distance": 60,
+      "duration": 60
+    }
+  ]
+  

@@ -5,15 +5,14 @@ const uploadData = async (req, res) => {
     await dataset.forEach(async (element) => {
       await Relation.create([
         {
-          kodeCabang: element.KODE_CABANG,
-          custNum: element.CUSTOMER_NUMBER,
-          address: element.ALAMAT,
-          state: element.STATE,
-          city: element.CITY,
-          province: element.PROVINCE,
-          zipCode: element.ZIP_CODE,
-          latitude: element.LATITUDE,
-          longitude: element.LONGITUDE,
+          custNum: element.custNum,
+          address: element.address,
+          state: element.state,
+          city: element.city,
+          province: element.province,
+          zipCode: element.zipCode,
+          latitude: element.latitude,
+          longitude: element.longitude,
         },
       ]);
     });

@@ -5,12 +5,12 @@ const uploadData = async (req, res) => {
     await dataset.forEach(async (element) => {
       await Product.create([
         {
-          prod_code: element.kode_produk,
-          namaProduk: element.nama_produk,
-          beratGram: element.berat_gram,
+          prod_code: element.prod_code,
+          namaProduk: element.namaProduk,
+          beratGram: element.beratGram,
           panjangCm: element.panjangCm,
-          lebarCm: element.lebar_cm,
-          tinggiCm: element.tinggi_cm,
+          lebarCm: element.lebarCm,
+          tinggiCm: element.tinggiCm,
         },
       ]);
     });

@@ -1,9 +1,5 @@
 const mongoose = require("mongoose");
 const relationSchema = new mongoose.Schema({
-  kodeCabang: {
-    type: String,
-    ref: "Branch", // Reference the Branch model
-  },
   custNum: { type: Number, required: true },
   address: { type: String, required: true },
   state: { type: String, required: true },
