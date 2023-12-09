@@ -2,17 +2,17 @@
     {
       "vendorId": 1,
       "vendorName": "Vendor A",
-      "rate": 40000
+      "rate": 8000
     },
     {
       "vendorId": 2,
       "vendorName": "Vendor B",
-      "rate": 38000
+      "rate": 9000
     },
     {
       "vendorId": 3,
       "vendorName": "Vendor C",
-      "rate": 39000
+      "rate": 8500
     }
   ]
   

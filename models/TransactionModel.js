@@ -28,6 +28,12 @@ const transactionSchema = new mongoose.Schema({
   arrival_date: { type: Date },
   distance: { type: Number },
   duration: { type: Number },
+  status: {
+    type: String,
+    required: true,
+    enum: ["Not Assigned", "On Delivery", "Done"],
+    default: "Not Assigned",
+  },
 });
 
 const Transaction = mongoose.model("Transaction", transactionSchema);

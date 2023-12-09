@@ -1,5 +1,6 @@
 const Transaction = require("../models/TransactionModel");
 const dataset = require("../dataset/transaction.json");
+const Vendor = require("../models/VendorModel");
 
 const uploadData = async (req, res) => {
   try {
@@ -8,13 +9,14 @@ const uploadData = async (req, res) => {
       await Transaction.create([
         {
           staffId: element.staffId,
-          orderNum: element.ORDER_NUMBER,
-          deliveryNum: element.DELIVERY_NO,
-          custNum: element.CUSTOMER_NUMBER,
-          prod_code: element.PRODUCT_CODE,
-          shipped_qty: element.SHIPPED_QTY,
-          delivery_date: element.DISPATCH_DATE,
+          orderNum: element.orderNum,
+          deliveryNum: element.deliveryNum,
+          custNum: element.custNum,
+          prod_code: element.prod_code,
+          shipped_qty: element.shipped_qty,
+          delivery_date: element.delivery_date,
           arrival_date: element.arrival_date,
+          status: element.status,
         },
       ]);
     });
@@ -37,7 +39,7 @@ const getTransaction = async (req, res) => {
         },
       },
       {
-        $unwind: "$productDetails", // Memastikan address tidak berupa array
+        $unwind: "$productDetails", 
       },
       {
         $lookup: {
@@ -48,7 +50,15 @@ const getTransaction = async (req, res) => {
         },
       },
       {
-        $unwind: "$address", // Memastikan address tidak berupa array
+        $unwind: "$address",
+      },
+      {
+        $project: { //1 biar di include, bukan initialState
+          _id: 1,
+          "productDetails.panjangCm": 1,
+          "productDetails.lebarCm": 1,
+          "productDetails.tinggiCm": 1,
+        },
       },
     ]);
 
@@ -72,7 +82,7 @@ const getTransactionSocket = async (req, res) => {
         },
       },
       {
-        $unwind: "$productDetails", // Memastikan address tidak berupa array
+        $unwind: "$productDetails", 
       },
       {
         $lookup: {
@@ -83,7 +93,7 @@ const getTransactionSocket = async (req, res) => {
         },
       },
       {
-        $unwind: "$address", // Memastikan address tidak berupa array
+        $unwind: "$address", 
       },
     ]);
 
@@ -114,9 +124,53 @@ const assign = async (req, res) => {
   }
 };
 
+
+const getOngkir = async (req, res) => {
+  try {
+    const { transactionId } = req.params;
+
+    // Assuming you have a valid ObjectId for the transactionId
+    const transaction = await Transaction.findById(transactionId);
+
+    if (!transaction) {
+      return res.status(404).json({ error: 'Transaction not found' });
+    }
+
+    // Calculate Ongkir based on distance
+    const ongkir = calculateOngkir(transaction.distance, transaction.productDetails);
+
+    return res.json({ ongkir });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+};
+
+const calculateOngkir = async (distance, productDetails) => {
+
+  // Example: Summing up the dimensions of all products
+  const totalPanjangCm = productDetails.reduce((sum, product) => sum + product.panjangCm, 0);
+  const totalLebarCm = productDetails.reduce((sum, product) => sum + product.lebarCm, 0);
+  const totalTinggiCm = productDetails.reduce((sum, product) => sum + product.tinggiCm, 0);
+
+  // Your Ongkir calculation based on total dimensions and distance
+  const dimensionFactor = totalPanjangCm * totalLebarCm * totalTinggiCm / 1000;
+
+  const basePrice = await Vendor.getRate();
+
+  if (distance < 10) {
+    return basePrice + dimensionFactor; // Price for distances less than 10 units, considering dimension factor
+  } else if (distance >= 10 && distance < 20) {
+    return basePrice + dimensionFactor; // Price for distances between 10 and 20 units, considering dimension factor
+  } else {
+    return basePrice + dimensionFactor; // Default price for other distances, considering dimension factor
+  }
+};
+
 module.exports = {
   uploadData,
   getTransaction,
   assign,
   getTransactionSocket,
+  getOngkir,
 };
